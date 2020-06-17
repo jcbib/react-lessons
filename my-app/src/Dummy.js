@@ -1,13 +1,20 @@
 import React, {Component} from 'react';
 
-function Dummy() {
-    return (
-        <div className="dummy">
-            <div> Name: Elton </div>
-            <div> Age: 20</div>
-            <div> Major: CS</div>
-        </div>
-    )
+class Dummy extends Component {
+    render() {
+        //console.log(this.props);
+
+        // Destructuring, grab prop names and store in variables
+        const{name, age, major} = this.props;
+
+        return (
+            <div className="dummy">
+                <div> Name: {name} </div>
+                <div> Age: {age} </div>
+                <div> Major: {major}</div>
+            </div>
+        )
+    }
 }
 
 export default Dummy;
