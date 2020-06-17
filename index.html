@@ -16,8 +16,22 @@
     <script type="text/babel">
         class App extends React.Component {
             state = {
-                name: 'STOM',
+                name: 'Toad',
                 age: 40
+            }
+
+            handleChange = (e) => {
+                this.setState({
+                    name: e.target.value // gets value inside event object (input field)
+                });
+            }
+
+            handleSubmit = (e) => {
+                // Want to prevent default event behavior of just refreshing page
+                e.preventDefault();
+
+                console.log( 'Form submitted', this.state.name );
+
             }
 
             render() {
@@ -25,17 +39,13 @@
                     // Limitations in JSX: Only have one root element
                     // React nests component inside the div with id "app"
                     // Note: className vs. class b/c reserved keyword
+                    // onSubmit catches both when user presses 'Enter' and when user presses button in form
                     <div className="app-content">  
-                        <h1> Hello, world! </h1>
-                        <p>
-                            {   
-                                // Notes:
-                                // Curly braces indicate dynamic Javascript you want to run
-                                // Reruns after refreshing
-                                // For event handlers, don't invoke with parens because will call immediately
-                            }
-                            My name is: {this.state.name} and I am {this.state.age}
-                        </p>
+                        <h1> Hello, world! My name is {this.state.name} </h1>
+                        <form onSubmit={this.handleSubmit}>
+                            <input type="text" onChange={this.handleChange}/>
+                            <button> Submit </button>
+                        </form>
                         </div>
                 )
             }
