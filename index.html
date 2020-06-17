@@ -19,6 +19,20 @@
                 name: 'STOM',
                 age: 40
             }
+
+            handleClick(e) {
+                //console.log(e.target);
+                console.log(this.state);
+            }
+
+            handleMouseOver(e) {
+                console.log(e.target, e.pageX);
+            }
+
+            handleCopy(e) {
+                console.log('Hello');
+            }
+
             render() {
                 return (
                     // Limitations in JSX: Only have one root element
@@ -31,9 +45,13 @@
                                 // Notes:
                                 // Curly braces indicate dynamic Javascript you want to run
                                 // Reruns after refreshing
+                                // For event handlers, don't invoke with parens because will call immediately
                             }
                             My name is: {this.state.name} and I am {this.state.age}
                         </p>
+                        <button onClick={this.handleClick}> Click me </button>
+                        <button onMouseOver={this.handleMouseOver}> Hover me </button>
+                        <p onCopy={this.handleCopy}> I think therefore, I am </p>
                     </div>
                 )
             }
