@@ -20,16 +20,25 @@
                 age: 40
             }
 
-            handleClick(e) {
+            handleClick = (e) => {
                 //console.log(e.target);
-                console.log(this.state);
+                // Need to bind context of 'this' to our functions
+                // Solution is arrow function; allows us to access and change state
+                // Don't want to change state directly, bad practice (ex: this.state.age = 50;)
+                this.setState({
+                    name: 'Toad'
+                })
+                console.log(this.state); // Context of 'this' keyword is limited to when it's called
             }
 
-            handleMouseOver(e) {
+            handleMouseOver = (e) => {
                 console.log(e.target, e.pageX);
+                this.setState({
+                    age: this.state.age + 1
+                })
             }
 
-            handleCopy(e) {
+            handleCopy = (e) => {
                 console.log('Hello');
             }
 
