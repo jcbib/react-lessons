@@ -1,13 +1,22 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-function Dummy() {
+function Dummies(props) {
+    const{ dummies } = props;
+    const dummyList = dummies.map(dummy =>{
+        return ( // Needs unique key for each item in list (id)
+            <div className="dummy" key={dummy.id}>
+                <div>Name: {dummy.name}</div>
+                <div>Age: {dummy.age}</div>
+                <div>Major: {dummy.major}</div>
+            </div>
+        )
+    })
     return (
-        <div className="dummy">
-            <div> Name: Elton </div>
-            <div> Age: 20</div>
-            <div> Major: CS</div>
+        <div className="dummy-list">
+            {dummyList}
         </div>
     )
 }
 
-export default Dummy;
+
+export default Dummies;
