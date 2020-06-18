@@ -1,7 +1,8 @@
 import React from 'react';
 
-function Dummies(props) {
-    const{ dummies } = props;
+const Dummies = ({dummies}) => {
+    // Use functional components when we are not concerned with state; concerned with UI
+    // const{ dummies } = props; can put directly in parameters for destructuring
     const dummyList = dummies.map(dummy =>{
         return ( // Needs unique key for each item in list (id)
             <div className="dummy" key={dummy.id}>
