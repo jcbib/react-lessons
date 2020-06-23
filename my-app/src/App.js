@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Dummies from './Dummy';
 import AddDummy from './AddDummy';
 
-
 class App extends Component {
   state = {
     dummies: [
@@ -21,13 +20,23 @@ class App extends Component {
     })
   }
 
+  deleteDummy = (id) => {
+    // Filter will filter out items in array
+    let dummies = this.state.dummies.filter(dummy => {
+      return dummy.id !== id;
+    })
+    this.setState({
+      dummies: dummies
+    })
+  }
+
   render() {
     return (
       // Nesting components is as simple as making it an HTML Tag, see 'Dummy' below
       <div className="App">
         <h1> My first React app! </h1>
         <p>Welcome :)</p>
-        <Dummies dummies={this.state.dummies}/>
+        <Dummies deleteDummy={this.deleteDummy} dummies={this.state.dummies}/>
         <AddDummy addDummy={this.addDummy}/>
       </div>
     )
